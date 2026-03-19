@@ -16,7 +16,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['email', 'name']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal Info'), {'fields': ('name',)}),
+        (_('Personal Info'), {'fields': ('name', 'passage_id')}),
         (
             _('Permissions'),
             {
@@ -52,3 +52,6 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(models.User, UserAdmin)
+admin.site.register(models.Categoria)
+admin.site.register(models.Editora)
+admin.site.register(models.Autor)
