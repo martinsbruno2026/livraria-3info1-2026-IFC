@@ -11,11 +11,11 @@ from core.views import CategoriaViewSet, UserViewSet , EditoraViewSet , AutorVie
 
 router = DefaultRouter()
 
-router.register(r'categoria', CategoriaViewSet, basename='categoria')
+router.register(r'categoria', CategoriaViewSet, basename='categorias')
 router.register(r'usuarios', UserViewSet, basename='usuarios')
-router.register(r'editoras', EditoraViewSet, basename='editora')
+router.register(r'editoras', EditoraViewSet, basename='editoras')
 router.register(r'autores', AutorViewSet, basename='autores')
-router.register(r'livros', LivroViewSet, basename='livro')
+router.register(r'livros', LivroViewSet, basename='livros')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
