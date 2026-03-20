@@ -4,9 +4,11 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from rest_framework import viewsets
+
 
 from core.models import User
-from core.serializers import UserSerializer
+from core.serializers import UserSerializer, UserRegistrationSerializer
 
 
 class UserViewSet(ModelViewSet):
@@ -24,22 +26,8 @@ class UserViewSet(ModelViewSet):
         user = request.user
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()  # noqa: E112
+    serializer_class = UserSerializer
 
-    class UserRegistrationView(ModelViewSet):
-        queryset = User.objects.all()
-        serializer_class = UserRegistrationSerializer  # noqa: F821
-        permission_classes = [IsAuthenticated]
-        http_method_names = ['post']
-
-        @extend_schema(
-            summary='Registrar novo usuário',
-            description='Permite registrar um novo usuário.',
-            request=UserRegistrationSerializer,  # noqa: F821
-            responses={201: UserSerializer, 400: None},
-        )
-        def create(self, request, *args, **kwargs):
-            """Registra um novo usuário."""
-            serializer = self.get_serializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            user = serializer.save()
-            return Response(UserSerializer(user).data, status=status.HTTP_201_CREATED)
