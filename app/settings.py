@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_spectacular',
     'rest_framework',
+    'uploader',
     'core',
+
 ]
 
 MIDDLEWARE = [
@@ -157,3 +159,4 @@ PASSAGE_API_KEY = os.getenv('PASSAGE_API_KEY', 'api_key')
 
 # Exibe as configurações principais para verificação
 print(f'{MODE = } \n{MEDIA_URL = } \n{DATABASES = }')
+
