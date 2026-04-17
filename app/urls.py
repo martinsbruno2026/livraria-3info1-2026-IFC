@@ -31,8 +31,8 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name='schema'),
         name='redoc',
     ),
-    # API
-    path('api/', include(router.urls)),
-]
-    path('api/media/', include(uploader_router.urls)),  
-  
+
+urlpatterns = [
+    path('api/...', include(...)),
+        path('api/media/', include(uploader_router.urls)),  
+] 
