@@ -1,4 +1,4 @@
-from django.contrib import admin
+import django.contrib
 from django.urls import include, path
 from drf_spectacular.views import (
     SpectacularAPIView,
@@ -18,7 +18,7 @@ router.register(r'autores', AutorViewSet, basename='autores')
 router.register(r'livros', LivroViewSet, basename='livros')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', django.contrib.admin.site.urls),
     # OpenAPI 3
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path(
@@ -34,3 +34,5 @@ urlpatterns = [
     # API
     path('api/', include(router.urls)),
 ]
+    path('api/media/', include(uploader_router.urls)),  
+  
