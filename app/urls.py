@@ -19,8 +19,8 @@ from core.views import (
     CategoriaViewSet,
     EditoraViewSet,
     LivroViewSet,
-    UserRegistrationView,
     UserViewSet,
+   #UserRegistrationView,
 )
 from uploader.router import router as uploader_router
 
