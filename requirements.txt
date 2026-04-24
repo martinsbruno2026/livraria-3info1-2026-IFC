@@ -21,6 +21,7 @@ django-cors-headers==4.9.0
 django-extensions==4.1
 django-filter==25.2
 djangorestframework==3.17.1
+djangorestframework-simplejwt==5.5.1
 drf-spectacular==0.29.0
 filelock==3.28.0
 gunicorn==25.3.0
