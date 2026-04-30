@@ -1,22 +1,9 @@
-from rest_framework import viewsets, status
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from django.db import models
-from rest_framework import serializers
+from rest_framework.viewsets import ModelViewSet
 
-from rest_framework import viewsets
-from core.models import Autor   # ← importe o modelo daqui
-from core.serializers import AutorSerializer  # ajuste o caminho se necessário
+from core.models import Autor
+from core.serializers import AutorSerializer
 
-class AutorViewSet(viewsets.ModelViewSet):
-    queryset = Autor.objects.all()
+
+class AutorViewSet(ModelViewSet):
+    queryset = Autor.objects.order_by('nome')
     serializer_class = AutorSerializer
-    # filterset_fields = ['nome']
-    # search_fields = ['nome']
-
-
-class AutorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Autor
-        fields = ['id', 'nome', 'email']
-

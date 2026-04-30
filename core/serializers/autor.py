@@ -1,5 +1,9 @@
-from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
 
-class AutorSerializer(serializers.Serializer):
-    nome = serializers.CharField(max_length=100)
-    email = serializers.EmailField(max_length=100, allow_blank=True, required=False)
+from core.models import Autor
+
+
+class AutorSerializer(ModelSerializer):
+    class Meta:
+        model = Autor
+        fields = '__all__'
