@@ -1,0 +1,26 @@
+{
+  "name": "livraria-3info1-2026-ifc",
+  "version": "1.0.0",
+  "description": "Esse é um template de projeto Django com DRF, PDM e muito mais. Ele já vem com algumas configurações e pacotes pré-instalados, como o PDM, Django, Django REST Framework, PostgreSQL, SQLite, Swagger, black, isort, Render, Cloudinary, Corsheaders, Django-Extensions, Django-Filter, dotenv, dj-database-url, drf-spectacular, gunicorn, netifaces, rest-framework-simplejwt, whitenoise e passage.id",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinsbruno2026/livraria-3info1-2026-IFC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/martinsbruno2026/livraria-3info1-2026-IFC/issues"
+  },
+  "homepage": "https://github.com/martinsbruno2026/livraria-3info1-2026-IFC#readme"
+}
+
+"scripts": {
+  "dev": "vite",
+  "start": "node index.js"
+}
