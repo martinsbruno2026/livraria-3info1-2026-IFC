@@ -16,7 +16,7 @@ class LivroRetrieveSerializer(ModelSerializer):
 
     class Meta:
         model = Livro
-        fields = '__all__'
+        fields = ('id', 'titulo', 'isbn', 'quantidade', 'preco', 'categoria', 'editora', 'autores', 'capa')
         depth = 1
 
 
@@ -32,4 +32,7 @@ class LivroSerializer(ModelSerializer):
 
     class Meta:
         model = Livro
-        fields = '__all__'
+        fields = (
+            'id', 'titulo', 'isbn', 'quantidade', 'preco',
+            'categoria', 'editora', 'autores', 'capa', 'capa_attachment_key'
+        )
