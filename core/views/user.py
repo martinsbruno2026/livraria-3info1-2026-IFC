@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 try:
     from drf_spectacular.utils import extend_schema  # pylint: disable=import-error
 except ImportError:
@@ -15,10 +14,12 @@ try:
     from rest_framework.response import Response
     from rest_framework.viewsets import ModelViewSet  # pylint: disable=import-error
 except ImportError:
-    class status:
+    class Status:
         HTTP_200_OK = 200
 
-    def action(*args, **kwargs):
+    status = Status()
+
+    def action(*_args, **_kwargs):
         def decorator(func):
             return func
         return decorator
@@ -38,19 +39,17 @@ except ImportError:
             self.status = status
 
     class ModelViewSet:
-        pass
-=======
-from drf_spectacular.utils import extend_schema
-from rest_framework import status, viewsets
-from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.response import Response
->>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
+        def get_permissions(self):
+            return []
 
 from core.models import User
-from core.serializers import UserRegistrationSerializer, UserSerializer
+from core.serializers import (
+    UserRegistrationSerializer,
+    UserSerializer,
+)
 
-class UserViewSet(viewsets.ModelViewSet):
+
+class UserViewSet(ModelViewSet):
     queryset = User.objects.all().order_by('id')
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
@@ -70,28 +69,16 @@ class UserViewSet(viewsets.ModelViewSet):
         return UserSerializer
 
     @extend_schema(
-<<<<<<< HEAD
         summary="Dados do usuário autenticado",
         description="Retorna os dados do usuário autenticado.",
-=======
-        summary='Dados do usuário autenticado',
-        description='Retorna os dados do perfil do usuário logado via Token/JWT.',
->>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
         responses={200: UserSerializer, 401: None},
     )
     @action(detail=False, methods=['get'])
     def me(self, request):
-<<<<<<< HEAD
         """ Retorna os dados do usuário autenticado."""
         user = request.user
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
-=======
-        """Endpoint: /users/me/"""
-        serializer = self.get_serializer(request.user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
->>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
 
 
 class UserRegistrationView(CreateAPIView):
