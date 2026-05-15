@@ -19,8 +19,13 @@ from core.views import (
     CategoriaViewSet,
     EditoraViewSet,
     LivroViewSet,
+<<<<<<< HEAD
     UserRegistrationView,
     UserViewSet,
+=======
+    UserViewSet,
+   #UserRegistrationView,
+>>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
 )
 from uploader.router import router as uploader_router
 
@@ -59,4 +64,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
 ]
 
+<<<<<<< HEAD
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
+=======
+urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
+>>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
