@@ -55,8 +55,7 @@ admin.site.register(models.Autor)
 admin.site.register(models.Categoria)
 admin.site.register(models.Editora)
 admin.site.register(models.Livro)
-<<<<<<< HEAD
 admin.site.register(models.User, UserAdmin)
-=======
 admin.site.register(models.User, UserAdmin)
->>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
+admin.site.register(models.Compra)
+
