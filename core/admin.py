@@ -58,4 +58,5 @@ admin.site.register(models.Livro)
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Compra)
+admin.site.register(models.ItensCompra)
 
