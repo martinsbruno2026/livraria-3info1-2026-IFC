@@ -5,7 +5,7 @@ description = "Uma API REST de uma livraria feita com Django e Django REST Frame
 authors = [{ name = "Marco André Mendes", email = "marcoandre@gmail.com" }]
 dependencies = [
     "dj-database-url>=2.1.0",
-    "django-cors-headers>=4.9.0",
+    "django-cors-headers>=4.9.0,<5.0.0",
     "django-extensions>=3.2.3",
     "django-filter>=23.3",
     "django>=5.1.3",

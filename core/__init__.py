@@ -1,13 +1,2 @@
-"""Pacote principal da aplicação core."""
+"""Pacote principal do sistema."""
 
-from .models import Autor, Categoria, Compra, Editora, ItensCompra, Livro, User
-
-__all__ = [
-    "Autor",
-    "Categoria",
-    "Compra",
-    "Editora",
-    "ItensCompra",
-    "Livro",
-    "User",
-]
