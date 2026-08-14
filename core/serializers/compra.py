@@ -1,6 +1,6 @@
+from core.models import Compra
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Compra
 
 class CompraSerializer(ModelSerializer):
     class Meta:

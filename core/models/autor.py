@@ -11,3 +11,4 @@ class Autor(models.Model):
     class Meta:
         verbose_name = 'autor'
         verbose_name_plural = 'autores'
+        ordering = ['nome']

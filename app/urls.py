@@ -17,21 +17,18 @@ from rest_framework_simplejwt.views import (
 from core.views import (
     AutorViewSet,
     CategoriaViewSet,
+    CompraViewSet,
     EditoraViewSet,
     LivroViewSet,
-<<<<<<< HEAD
     UserRegistrationView,
     UserViewSet,
-=======
-    UserViewSet,
-   #UserRegistrationView,
->>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
 )
 from uploader.router import router as uploader_router
 
 router = DefaultRouter()
 router.register(r'autores', AutorViewSet, basename='autores')
 router.register(r'categorias', CategoriaViewSet, basename='categorias')
+router.register(r'compras', CompraViewSet, basename='compras')
 router.register(r'editoras', EditoraViewSet, basename='editoras')
 router.register(r'livros', LivroViewSet, basename='livros')
 router.register(r'usuarios', UserViewSet, basename='usuarios')
@@ -64,8 +61,4 @@ urlpatterns = [
     path('api/', include(router.urls)),
 ]
 
-<<<<<<< HEAD
 urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
-=======
-urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
->>>>>>> 289b2b8760bcde2e74635f8492ad2e3ddcee4bfd
