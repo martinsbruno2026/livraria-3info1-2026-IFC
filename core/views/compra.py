@@ -5,5 +5,5 @@ from core.serializers import CompraSerializer
 
 
 class CompraViewSet(ModelViewSet):
-    queryset = Compra.objects.all()
+    queryset = Compra.objects.all()  # pylint: disable=no-member
     serializer_class = CompraSerializer
