@@ -2,9 +2,17 @@
 Django admin customization.
 """
 
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.utils.translation import gettext_lazy as _
+try:
+    from django.contrib import admin
+    from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+    from django.utils.translation import gettext_lazy as _
+except ImportError:  # pragma: no cover - fallback for linting/runtime environments without Django
+    admin = None
+    BaseUserAdmin = object
+
+    def _(message):
+        return message
+
 
 from core import models
 
@@ -56,7 +64,4 @@ admin.site.register(models.Categoria)
 admin.site.register(models.Editora)
 admin.site.register(models.Livro)
 admin.site.register(models.User, UserAdmin)
-admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Compra)
-admin.site.register(models.ItensCompra)
-
