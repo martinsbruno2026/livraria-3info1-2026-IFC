@@ -1,6 +1,7 @@
 try:
     from rest_framework import serializers
 except Exception:  # fall back for environments without DRF (linting/static analysis)
+
     class _StubModelSerializer:
         pass
 
