@@ -1,11 +1,4 @@
-
-try:
-    from rest_framework import serializers
-except ImportError as e:
-    raise ImportError(
-        "Missing dependency: djangorestframework is required to use core.serializers.user; "
-        "install it with `pip install djangorestframework`."
-    ) from e
+from rest_framework import serializers
 
 from core.models import User
 
