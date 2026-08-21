@@ -1,15 +1,13 @@
 try:
-    # Attempt real import; in environments without DRF (linters, static analysis)
-    # fall back to lightweight dummies so the module can still be analyzed.
     from rest_framework import serializers  # type: ignore
-except ImportError:  # pragma: no cover - fallback for static analysis / missing env
+except ImportError:
 
     class _DummySerializers:
         class ModelSerializer:
             pass
 
         class SlugRelatedField:
-            def __init__(self, *args, **kwargs):
+            def __init__(self, *args, **kwargs):  # noqa: ARG002
                 pass
 
         class Serializer:
@@ -19,6 +17,11 @@ except ImportError:  # pragma: no cover - fallback for static analysis / missing
 
 from core.models import Livro
 from uploader.serializers import ImageSerializer
+
+try:
+    from uploader.models import Attachment
+except ImportError:
+    Attachment = None
 
 
 class LivroListSerializer(serializers.ModelSerializer):
@@ -32,17 +35,30 @@ class LivroRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Livro
-        fields = ('id', 'titulo', 'isbn', 'quantidade', 'preco', 'categoria', 'editora', 'autores', 'capa')
+        fields = (
+            'id',
+            'titulo',
+            'isbn',
+            'quantidade',
+            'preco',
+            'categoria',
+            'editora',
+            'autores',
+            'capa',
+        )
         depth = 1
 
 
 class LivroSerializer(serializers.ModelSerializer):
-    capa_attachment_key = serializers.SlugRelatedField(
-        source='capa',
-        slug_field='attachment_key',
-        required=False,
-        write_only=True,
-    )
+    if Attachment is not None:
+        capa_attachment_key = serializers.SlugRelatedField(
+            source='capa',
+            slug_field='attachment_key',
+            queryset=Attachment.objects.all(),
+            required=False,
+            write_only=True,
+        )
+
     capa = ImageSerializer(required=False, read_only=True)
 
     class Meta:
@@ -57,5 +73,4 @@ class LivroSerializer(serializers.ModelSerializer):
             'editora',
             'autores',
             'capa',
-            'capa_attachment_key',
-        )
+        ) + (('capa_attachment_key',) if Attachment is not None else ())
