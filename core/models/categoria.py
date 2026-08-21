@@ -2,9 +2,11 @@ from django.db import models
 
 
 class Categoria(models.Model):
-    """Representa a categoria de um livro."""
-
     descricao = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+
     def __str__(self):
-        return f'({self.pk}) {self.descricao}'
+        return self.descricao

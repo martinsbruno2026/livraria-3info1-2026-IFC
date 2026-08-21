@@ -1,3 +1,6 @@
-from django.test import TestCase
+"""Testes do aplicativo uploader."""
 
-# Create your tests here.
+
+def test_placeholder() -> None:
+    """Teste inicial para manter o módulo de testes válido."""
+    assert True
