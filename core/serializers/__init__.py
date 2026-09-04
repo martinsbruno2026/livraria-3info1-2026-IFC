@@ -1,9 +1,13 @@
-from .catalogo import CategoriaSerializer, EditoraSerializer, AutorSerializer
-from .livro import LivroSerializer, LivroListSerializer, LivroRetrieveSerializer
-from .user import UserSerializer, UserRegistrationSerializer
+from .autor import AutorSerializer
+from .categoria import CategoriaSerializer
 from .compra import (
-    CompraCreateUpdateSerializer,
-    CompraSerializer,
     ItensCompraCreateUpdateSerializer,
+    ItensCompraListSerializer,
     ItensCompraSerializer,
+    CompraCreateUpdateSerializer,
+    CompraListSerializer,
+    CompraSerializer,
 )
+from .editora import EditoraSerializer
+from .livro import LivroListSerializer, LivroRetrieveSerializer, LivroSerializer
+from .user import UserRegistrationSerializer, UserSerializer

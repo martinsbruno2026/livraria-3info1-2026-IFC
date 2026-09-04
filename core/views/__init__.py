@@ -1,4 +1,6 @@
-from .catalogo import CategoriaViewSet, EditoraViewSet, AutorViewSet
-from .livro import LivroViewSet
-from .user import UserViewSet, RegistroView
+from .autor import AutorViewSet
+from .categoria import CategoriaViewSet
 from .compra import CompraViewSet
+from .editora import EditoraViewSet
+from .livro import LivroViewSet
+from .user import UserRegistrationView, UserViewSet
