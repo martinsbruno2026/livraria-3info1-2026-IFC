@@ -53,3 +53,11 @@ class CompraCreateUpdateSerializer(ModelSerializer):
             for item_data in itens_data:
                 ItensCompra.objects.create(compra=instance, **item_data)
         return instance
+
+from rest_framework.serializers import (
+    CharField,
+    CurrentUserDefault,  # novo
+    HiddenField,         # novo
+    ModelSerializer,
+    SerializerMethodField,
+)
