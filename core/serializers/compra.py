@@ -127,3 +127,25 @@ class CompraSerializer(ModelSerializer):
         model = Compra
         fields = ('id', 'usuario', 'status', 'total', 'itens')
 
+        ...
+from rest_framework.serializers import (
+    CharField,
+    CurrentUserDefault,
+    DateTimeField, # novo
+    HiddenField,
+    ModelSerializer,
+    SerializerMethodField,
+    ValidationError,
+)
+...
+class CompraSerializer(ModelSerializer):
+    usuario = CharField(source='usuario.email', read_only=True)
+    status = CharField(source='get_status_display', read_only=True)
+    data = DateTimeField(read_only=True) # novo campo
+    itens = ItensCompraSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Compra
+        fields = ('id', 'usuario', 'status', 'total', 'data', 'itens') # modificado
+...
+
