@@ -118,3 +118,16 @@ class CompraSerializer(ModelSerializer):
     class Meta:
         model = Compra
         fields = ('id', 'usuario', 'status', 'total', 'itens')
+
+]
+...
+    @transaction.atomic
+    def create(self, validated_data):
+        itens = validated_data.pop('itens')
+        compra = Compra.objects.create(**validated_data)
+        for item in itens:
+            item['preco'] = item['livro'].preco # preço do livro no momento da compra
+            ItensCompra.objects.create(compra=compra, **item)
+        compra.save()
+        return compra
+...
