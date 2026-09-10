@@ -1,9 +1,13 @@
 from django.db import transaction
 from rest_framework.serializers import (
     CharField,
+<<<<<<< HEAD
     CurrentUserDefault,
     DecimalField,
     HiddenField,
+=======
+    DecimalField,
+>>>>>>> d1b4469a2e28cec8a54137d0ee4617a7b3b59603
     ModelSerializer,
     SerializerMethodField,
     ValidationError,
@@ -21,6 +25,7 @@ class ItensCompraCreateUpdateSerializer(ModelSerializer):
         model = ItensCompra
         fields = ('livro', 'quantidade')
 
+<<<<<<< HEAD
     def validate_quantidade(self, quantidade):
         if quantidade <= 0:
             raise ValidationError('A quantidade deve ser maior do que zero.')
@@ -31,6 +36,8 @@ class ItensCompraCreateUpdateSerializer(ModelSerializer):
             raise ValidationError('Quantidade de itens maior do que a quantidade em estoque.')
         return item
 
+=======
+>>>>>>> d1b4469a2e28cec8a54137d0ee4617a7b3b59603
 
 class ItensCompraListSerializer(ModelSerializer):
     livro = CharField(source='livro.titulo', read_only=True)
@@ -66,7 +73,10 @@ class ItensCompraSerializer(ModelSerializer):
 # ====================================================================
 
 class CompraCreateUpdateSerializer(ModelSerializer):
+<<<<<<< HEAD
     usuario = HiddenField(default=CurrentUserDefault())
+=======
+>>>>>>> d1b4469a2e28cec8a54137d0ee4617a7b3b59603
     itens = ItensCompraCreateUpdateSerializer(many=True)
 
     class Meta:
