@@ -20,7 +20,6 @@ class CompraViewSet(ModelViewSet):
             return CompraCreateUpdateSerializer
         return CompraSerializer
 
-<<<<<<< HEAD
     def get_queryset(self):
         usuario = self.request.user
         if usuario.is_superuser:
@@ -29,21 +28,3 @@ class CompraViewSet(ModelViewSet):
             return Compra.objects.order_by('-id')
         return Compra.objects.filter(usuario=usuario).order_by('id')
 
-=======
-from rest_framework.viewsets import ModelViewSet
-from core.models import Compra
-from core.serializers.compra import (
-    CompraCreateUpdateSerializer,
-    CompraListSerializer,
-    CompraSerializer,
-)
-
-class CompraViewSet(ModelViewSet):
-    def get_queryset(self):
-        usuario = self.request.user
-        if usuario.is_superuser:
-            return Compra.objects.all()
-        if usuario.groups.filter(name='administradores'):
-            return Compra.objects.all()
-        return Compra.objects.filter(usuario=usuario)
->>>>>>> d1b4469a2e28cec8a54137d0ee4617a7b3b59603
