@@ -42,19 +42,18 @@ class ItensCompraInline(StackedInline):
 
 @register(Compra)
 class CompraAdmin(ModelAdmin):
-    @admin.display(description="Total")
+    list_display = ('usuario', 'status', 'total_formatado')
+    search_fields = ('usuario', 'status')
+    list_filter = ('usuario', 'status')
+    ordering = ('usuario', 'status')
+    list_per_page = 10
+    inlines = [ItensCompraInline]
+    readonly_fields = ('total_formatado',)
+
+    @display(description="Total")
     def total_formatado(self, obj):
         """Exibe R$ 123,45 em vez de 123.45."""
         return f"R$ {obj.total:.2f}"
-
-    list_display = ('usuario', 'status', 'total_formatado', 'data')  # mostra na listagem
-    ordering = ('usuario', 'status', 'data')  # ordena por esses campos
-    search_fields = ('usuario__email', 'status')  # campos pesquisáveis
-    list_filter = ('status', 'data')  # filtros laterais
-    list_per_page = 10
-    inlines = [ItensCompraInline]
-    readonly_fields = ('data', 'total_formatado',)  # campos somente leitura
-...
 
 @register(Editora)
 class EditoraAdmin(ModelAdmin):
